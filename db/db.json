@@ -1,0 +1,125 @@
+{
+    "pastéis": [
+      {
+        "id": 1,
+        "nome": "Carne",
+        "ingredientes": ["carne moída", "cebola", "alho", "cheiro-verde"],
+        "valor": 5.00
+      },
+      {
+        "id": 2,
+        "nome": "Queijo",
+        "ingredientes": ["queijo mussarela", "orégano"],
+        "valor": 4.50
+      },
+      {
+        "id": 3,
+        "nome": "Frango com Catupiry",
+        "ingredientes": ["frango desfiado", "catupiry", "milho"],
+        "valor": 6.00
+      },
+      {
+        "id": 4,
+        "nome": "Palmito",
+        "ingredientes": ["palmito", "azeitona", "cebola"],
+        "valor": 6.50
+      },
+      {
+        "id": 5,
+        "nome": "Pizza",
+        "ingredientes": ["queijo", "presunto", "tomate", "orégano"],
+        "valor": 5.50
+      },
+      {
+        "id": 6,
+        "nome": "Bacalhau",
+        "ingredientes": ["bacalhau desfiado", "azeitona", "cebola"],
+        "valor": 7.00
+      },
+      {
+        "id": 7,
+        "nome": "Calabresa",
+        "ingredientes": ["calabresa", "cebola"],
+        "valor": 5.50
+      },
+      {
+        "id": 8,
+        "nome": "Camarão",
+        "ingredientes": ["camarão", "requeijão", "cheiro-verde"],
+        "valor": 8.00
+      },
+      {
+        "id": 9,
+        "nome": "Chocolate",
+        "ingredientes": ["chocolate ao leite", "granulado"],
+        "valor": 4.00
+      },
+      {
+        "id": 10,
+        "nome": "Romeu e Julieta",
+        "ingredientes": ["goiabada", "queijo"],
+        "valor": 4.50
+      },
+      {
+        "id": 11,
+        "nome": "Brócolis com Queijo",
+        "ingredientes": ["brócolis", "queijo mussarela"],
+        "valor": 5.50
+      },
+      {
+        "id": 12,
+        "nome": "Carne Seca",
+        "ingredientes": ["carne seca desfiada", "requeijão"],
+        "valor": 6.50
+      },
+      {
+        "id": 13,
+        "nome": "Banana com Canela",
+        "ingredientes": ["banana", "canela", "açúcar"],
+        "valor": 4.00
+      },
+      {
+        "id": 14,
+        "nome": "Carne com Ovo",
+        "ingredientes": ["carne moída", "ovo cozido", "cebola"],
+        "valor": 5.50
+      },
+      {
+        "id": 15,
+        "nome": "Espinafre com Ricota",
+        "ingredientes": ["espinafre", "ricota", "noz-moscada"],
+        "valor": 5.50
+      },
+      {
+        "id": 16,
+        "nome": "4 Queijos",
+        "ingredientes": ["mussarela", "parmesão", "gorgonzola", "provolone"],
+        "valor": 6.00
+      },
+      {
+        "id": 17,
+        "nome": "Pepperoni",
+        "ingredientes": ["pepperoni", "queijo"],
+        "valor": 5.50
+      },
+      {
+        "id": 18,
+        "nome": "Nutella com Morango",
+        "ingredientes": ["Nutella", "morango"],
+        "valor": 6.00
+      },
+      {
+        "id": 19,
+        "nome": "Abóbora com Carne Seca",
+        "ingredientes": ["abóbora", "carne seca", "cheiro-verde"],
+        "valor": 6.50
+      },
+      {
+        "id": 20,
+        "nome": "Feijoada",
+        "ingredientes": ["feijoada", "couve", "farofa"],
+        "valor": 7.00
+      }
+    ]
+  }
+  
