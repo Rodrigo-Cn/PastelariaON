@@ -126,7 +126,7 @@ export default {
       cursor: pointer;
       color: white;
       background-color: #222;
-      border-radius: 8%;
+      border-radius: 5%;
       padding: 1%;
       font-size: 100%;
     }
@@ -134,11 +134,11 @@ export default {
       cursor: pointer;
       color: white;
       background-color: #222;
-      border-radius: 10%;
+      border-radius: 1%;
       padding: 1%;
       font-size: 100%;
     }
-    #form-flavor input{
+    /***#form-flavor input{
       border-left: 7px solid yellow;
-    }
+    } ***/
 </style>
