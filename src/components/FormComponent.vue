@@ -1,11 +1,12 @@
 <template>
   <div class="banner">
     <h1>Selecione o sabor do seu pastel:</h1>
-    <form action="" id="form-flavor">
+    <form @submit="createPastel" id="form-flavor">
       <div id="input-pastel">
-        <input type="text" name="name" placeholder="Nome do Cliente">
-        <select name="sabor" id="">
+        <input type="text" v-model="name" name="name" placeholder="Nome do Cliente">
+        <select name="sabor" v-model="flavorId">
           <option value="">Selecione o sabor:</option>
+          <option v-for="pastel in pasteis" :key="pastel.id" :value="pastel.id">{{ pastel.nome }}</option>
         </select>
       </div>
       <div id="button">
@@ -13,12 +14,69 @@
       </div>
     </form>
   </div>
-
 </template>
 <script>
-    export default{
-        name:'FormComponent'
-    }
+export default {
+  name: 'FormComponent',
+  data() {
+    return {
+      pasteis: [],
+      name: '',
+      flavor: '',
+      flavorId: '',
+    };
+  },
+  methods: {
+    async getPasteis() {
+      const request = await fetch("http://localhost:3000/pastéis",{
+        method: "GET",
+        headers: {"Content-type":"application/json"},
+      });
+      this.pasteis = await request.json();
+      console.log(this.pasteis)
+    },
+    async fetchPastelDetails() {
+      if (this.flavorId) {
+        const request = await fetch(`http://localhost:3000/pastéis`);
+        const pasteis = await request.json();
+        const pastel = pasteis.find((pastel) => pastel.id === parseInt(this.flavorId));
+        this.flavor = pastel.nome;
+      } else {
+        this.flavor = '';
+      }
+    },
+    async createPastel(e) {
+      if (!this.flavorId) {
+        alert("Selecione um sabor antes de enviar o pedido.");
+        return;
+      }
+      if (!this.name) {
+        alert("Selecione seu nome antes de enviar o pedido.");
+        return;
+      }
+
+      e.preventDefault();
+      await this.fetchPastelDetails();
+      const data = {
+        name: this.name,
+        flavorId: this.flavorId,
+        flavor: this.flavor,
+        status: 'Processando'
+      };
+
+      const dataJSON = JSON.stringify(data)
+
+      const request = await fetch("http://localhost:3000/pedidos",{
+        method: "POST",
+        headers: {"Content-type":"application/json"},
+        body: dataJSON
+      });
+    },
+  },
+  mounted() {
+    this.getPasteis();
+  }
+};
 </script>
 <style>
     .banner{
@@ -63,5 +121,8 @@
       border-radius: 10%;
       padding: 1%;
       font-size: 100%;
+    }
+    #form-flavor input{
+      border-left: 7px solid yellow;
     }
 </style>
