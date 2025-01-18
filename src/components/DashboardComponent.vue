@@ -1,4 +1,7 @@
 <template>
+    <div id="message">
+        <MessageComponent :message="message" :exist="exist"/>
+    </div>
     <div id="table">
         <div id="head-table">
             <div>#</div>
@@ -12,26 +15,60 @@
             <div>{{ order.name }}</div>
             <div>{{ order.flavor }}</div>
             <div>{{ order.status }}</div>
-            <div><button href="" id="drop">Cancelar</button><button href="" id="confirm">Concluir</button></div>
+            <div  v-if="order.status == 'Enviado'"><p id="final">Finalizado</p></div>
+            <div  v-else><button @click="deleteOrder(order.id)" id="drop">Cancelar</button><button @click="updateOrder(order.id)" href="" id="confirm">Concluir</button></div>
         </div>
     </div>
 </template>
 <script>
+    import MessageComponent from './MessageComponent.vue';
     export default{
         name:'DashboardComponent',
         data(){
             return{
-                orders:[]
+                orders:[],
+                message:'',
+                exist:false,
             }
         },
         methods:{
             async getOrders() {
                 const req = await fetch('http://localhost:3000/pedidos')
                 this.orders = await req.json()
+            },
+            async deleteOrder(id){
+                const req = await fetch(`http://localhost:3000/pedidos/${id}`,{
+                    method: "DELETE"
+                })
+                const res = req.json()
+                this.getOrders()
+                this.message = `Pedido ${id} cancelado com sucesso!`
+                this.exist = true
+                setTimeout(()=>{
+                    this.exist = false
+                }, 2000)
+            },
+            async updateOrder(id){
+                const data = JSON.stringify({status:'Enviado'})
+                const req = await fetch(`http://localhost:3000/pedidos/${id}`,{
+                    method: "PATCH",
+                    headers:{'Content-Type':'application/json'},
+                    body:data
+                })
+                const res = await req.json()
+                this.getOrders()
+                this.message = `Pedido ${id} enviado!`
+                this.exist = true
+                setTimeout(()=>{
+                    this.exist = false
+                }, 2000)
             }
         },
         mounted(){
             this.getOrders()
+        },
+        components:{
+            MessageComponent
         }
     }
 
@@ -63,10 +100,12 @@
         font-size: 17px;
     }
     #drop{
+        cursor: pointer;
         background-color: red;
         color: white;
     }
     #confirm{
+        cursor: pointer;
         background-color: green;
         color: white;
     }
@@ -81,5 +120,9 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+    }
+    #message{
+        width: 100%;
+        padding-left: 16%;
     }
 </style>

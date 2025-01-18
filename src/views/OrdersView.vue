@@ -23,5 +23,4 @@
     padding-top: 2%;
     padding-bottom: 2%;
   }
-
 </style>

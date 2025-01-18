@@ -15,5 +15,4 @@
       FormComponent,
     },
   }
-
 </script>

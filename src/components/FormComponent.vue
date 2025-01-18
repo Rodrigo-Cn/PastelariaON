@@ -82,6 +82,9 @@ export default {
 
       this.message = `Pedido de ${data.name} foi criado com sucesso!`
       this.exist = true
+      this.name = ''
+      this.flavor = ''
+      this.flavorId = ''
 
       setTimeout(() => {
         this.exist = false
@@ -100,7 +103,7 @@ export default {
       flex-direction: column;
       justify-content:baseline;
       align-items: center;
-      min-height: 500px;
+      min-height: 100vh;
       margin-top: 3%;
     }
     #form-flavor{
@@ -119,8 +122,8 @@ export default {
     #input-pastel input{
       margin-bottom: 1%;
       width: 40%;
-      height: 40px;
-      font-size: 100%;
+      height: 60px;
+      font-size: 30px;
     }
     #input-pastel select{
       cursor: pointer;
