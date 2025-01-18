@@ -1,9 +1,18 @@
 <template>
   <div class="home">
-    <h1>HOME</h1>
+    <FormComponent/>
   </div>
 </template>
-
 <script>
+import FormComponent from '../components/FormComponent.vue';
+
+  FormComponent
+
+  export default{
+    name:'HomeView',
+    components:{
+      FormComponent,
+    }
+  }
 
 </script>
