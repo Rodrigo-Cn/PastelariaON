@@ -1,4 +1,5 @@
 <template>
+  <MessageComponent :message="message" :exist="exist"/>
   <div class="banner">
     <h1>Selecione o sabor do seu pastel:</h1>
     <form @submit="createPastel" id="form-flavor">
@@ -16,6 +17,8 @@
   </div>
 </template>
 <script>
+import { setTimeout } from 'core-js';
+import MessageComponent from './MessageComponent.vue';
 export default {
   name: 'FormComponent',
   data() {
@@ -24,7 +27,12 @@ export default {
       name: '',
       flavor: '',
       flavorId: '',
+      message:'',
+      exist:false,
     };
+  },
+  components:{
+    MessageComponent
   },
   methods: {
     async getPasteis() {
@@ -71,6 +79,13 @@ export default {
         headers: {"Content-type":"application/json"},
         body: dataJSON
       });
+
+      this.message = `Pedido de ${data.name} foi criado com sucesso!`
+      this.exist = true
+
+      setTimeout(() => {
+        this.exist = false
+      }, 2000)
     },
   },
   mounted() {
@@ -86,6 +101,7 @@ export default {
       justify-content:baseline;
       align-items: center;
       min-height: 500px;
+      margin-top: 3%;
     }
     #form-flavor{
       width: 100%;

@@ -4,15 +4,13 @@
   </div>
 </template>
 <script>
-import FormComponent from '../components/FormComponent.vue';
-
-  FormComponent
-
+  import FormComponent from '../components/FormComponent.vue';
+  
   export default{
     name:'HomeView',
     components:{
       FormComponent,
-    }
+    },
   }
 
 </script>
