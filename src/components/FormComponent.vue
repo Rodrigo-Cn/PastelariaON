@@ -4,7 +4,7 @@
     <h1>Selecione o sabor do seu pastel:</h1>
     <form @submit="createPastel" id="form-flavor">
       <div id="input-pastel">
-        <input type="text" v-model="name" name="name" placeholder="Nome do Cliente">
+        <input type="text" v-model="name" name="name" :class="myclass" placeholder="Nome do Cliente">
         <select name="sabor" v-model="flavorId">
           <option value="">Selecione o sabor:</option>
           <option v-for="pastel in pasteis" :key="pastel.id" :value="pastel.id">{{ pastel.nome }}</option>
@@ -28,11 +28,23 @@ export default {
       flavor: '',
       flavorId: '',
       message:'',
+      myclass:'',
       exist:false,
     };
   },
   components:{
     MessageComponent
+  },
+  watch:{
+    name(){
+      if(this.name.length > 4){
+        this.myclass = 'green'
+      }else if(this.name.length > 0 && this.name.length <= 4){
+        this.myclass = 'yellow'
+      }else{
+        this.myclass = ''
+      }
+    }
   },
   methods: {
     async getPasteis() {
@@ -141,7 +153,10 @@ export default {
       padding: 1%;
       font-size: 100%;
     }
-    /***#form-flavor input{
-      border-left: 7px solid yellow;
-    } ***/
+    .yellow{
+      border-left: 10px solid yellow;
+    }
+    .green{
+      border-left: 10px solid rgb(127, 253, 137);
+    }
 </style>
